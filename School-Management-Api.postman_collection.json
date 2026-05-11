@@ -1,0 +1,240 @@
+{
+  "info": {
+    "_postman_id": "school-management-api-collection",
+    "name": "School Management API",
+    "description": "Collection for testing School Management API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"ABC High School\",\n  \"address\": \"123 Main Street, New York, NY 10001\",\n  \"latitude\": 40.7128,\n  \"longitude\": -74.0060\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        },
+        "description": "Add a new school to the database\n\nRequired fields:\n- name: School name (string)\n- address: School address (string)\n- latitude: School latitude (number)\n- longitude: School longitude (number)"
+      },
+      "response": []
+    },
+    {
+      "name": "Add School - Example 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"XYZ College\",\n  \"address\": \"456 Park Avenue, New York, NY 10022\",\n  \"latitude\": 40.7580,\n  \"longitude\": -73.9855\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        },
+        "description": "Add another school example"
+      },
+      "response": []
+    },
+    {
+      "name": "Add School - Example 3",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Manhattan Academy\",\n  \"address\": \"789 Broadway, New York, NY 10003\",\n  \"latitude\": 40.7350,\n  \"longitude\": -73.9911\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        },
+        "description": "Add third school example"
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools - Near Times Square",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=40.7580&longitude=-73.9855",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "40.7580",
+              "description": "User's latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "-73.9855",
+              "description": "User's longitude"
+            }
+          ]
+        },
+        "description": "Get all schools sorted by distance from Times Square, New York"
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools - Near Empire State Building",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=40.7484&longitude=-73.9857",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "40.7484",
+              "description": "User's latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "-73.9857",
+              "description": "User's longitude"
+            }
+          ]
+        },
+        "description": "Get all schools sorted by distance from Empire State Building"
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools - Custom Location",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=40.7128&longitude=-74.0060",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "40.7128",
+              "description": "User's latitude"
+            },
+            {
+              "key": "longitude",
+              "value": "-74.0060",
+              "description": "User's longitude"
+            }
+          ]
+        },
+        "description": "Get all schools sorted by distance from a custom location"
+      },
+      "response": []
+    },
+    {
+      "name": "Error - Invalid Coordinates",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=invalid&longitude=notanumber",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "invalid"
+            },
+            {
+              "key": "longitude",
+              "value": "notanumber"
+            }
+          ]
+        },
+        "description": "Test error handling - invalid coordinates"
+      },
+      "response": []
+    },
+    {
+      "name": "Error - Missing Latitude",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?longitude=-74.0060",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "longitude",
+              "value": "-74.0060"
+            }
+          ]
+        },
+        "description": "Test error handling - missing latitude"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}
