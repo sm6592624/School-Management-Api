@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏫 School Management System</h1>
+      <p>Add schools and find nearby schools based on your location</p>
+    </header>
+
+    <div class="main-content">
+      <!-- Add School Form -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2>Add New School</h2>
+        </div>
+        <form id="addSchoolForm" class="school-form">
+          <div class="form-group">
+            <label for="schoolName">School Name *</label>
+            <input type="text" id="schoolName" placeholder="Enter school name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="schoolAddress">Address *</label>
+            <input type="text" id="schoolAddress" placeholder="Enter school address" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="schoolLatitude">Latitude *</label>
+              <input type="number" id="schoolLatitude" placeholder="e.g., 40.7128" step="0.000001" required>
+            </div>
+            <div class="form-group">
+              <label for="schoolLongitude">Longitude *</label>
+              <input type="number" id="schoolLongitude" placeholder="e.g., -74.0060" step="0.000001" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add School</button>
+        </form>
+        <div id="addMessage" class="message"></div>
+      </section>
+
+      <!-- Find Schools Section -->
+      <section class="list-section">
+        <div class="section-header">
+          <h2>Find Schools Near You</h2>
+        </div>
+
+        <div class="location-input">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="userLatitude">Your Latitude *</label>
+              <input type="number" id="userLatitude" placeholder="e.g., 40.7128" step="0.000001" required>
+            </div>
+            <div class="form-group">
+              <label for="userLongitude">Your Longitude *</label>
+              <input type="number" id="userLongitude" placeholder="e.g., -74.0060" step="0.000001" required>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="findSchools()">Find Schools</button>
+          <button type="button" class="btn btn-secondary" onclick="getCurrentLocation()">📍 Use My Location</button>
+        </div>
+
+        <!-- Schools List -->
+        <div id="schoolsList" class="schools-container">
+          <p class="info-text">Enter your coordinates and click "Find Schools" to see nearby schools</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
