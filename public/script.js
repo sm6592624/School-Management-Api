@@ -48,11 +48,16 @@ document.getElementById('addSchoolForm').addEventListener('submit', async (e) =>
         await findSchools();
       }
     } else {
-      showMessage(messageDiv, `❌ Error: ${data.message}`, 'error');
+      showMessage(messageDiv, `❌ Error: ${data.message || 'Unknown error occurred'}`, 'error');
+      console.error('Server response:', data);
     }
   } catch (error) {
     console.error('Error:', error);
-    showMessage(messageDiv, `❌ Failed to add school: ${error.message}`, 'error');
+    showMessage(
+      messageDiv,
+      `❌ Failed to add school: ${error.message}. Check console or visit /api/diagnosis for details.`,
+      'error'
+    );
   }
 });
 
